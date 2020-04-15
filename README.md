@@ -31,10 +31,10 @@ console.log('この行はコメントアウトされません')
 
 ```js
 let variable = 123;
-variavle = 456;
+variable = 456;
 
 const Variable = 123;
-Variavle = 456; // error
+Variable = 456; // error
 ```
 
 ### use strict モード
