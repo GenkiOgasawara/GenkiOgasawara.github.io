@@ -12,11 +12,18 @@
 */
 ```
 
+### Tips: console
+`console.log("test")` でコンソールに `"test"` が出力されます。
+
+Google Chrome で右クリック -> 検証で Developer Tool が表示されます。
+
+このハンズオンでは Developer Tool の Console タブでコードを書いていくことを推奨します。
+
 ### HTML-like コメント
 ```js
-<!--
-  HTML の記法でもコメントアウトされます。
--->
+<!--  HTML の記法でもコメントアウトされます。
+console.log('この行はコメントアウトされません')
+--> HTML の記法でもコメントアウトされます。
 ```
 
 ## 変数の定義
@@ -55,10 +62,8 @@ typeof true
 typeof {}
 ```
 
-`console.log("test")` でコンソールに `"test"` が出力されます。
-
 ### Tips
-いろんな console なんとかがあります。
+いろんな console メソッドがあります。
 
 ```js
 let message = 
@@ -86,7 +91,7 @@ let obj = {
 obj.weather // "rainy"
 ```
 ### 分割代入
-オブジェクトのプロパティをわざわざ指定する必要がない
+分割代入の記法を使うと、オブジェクトのプロパティをわざわざ指定する必要がありません。
 ```
 const obj = {
   "city": "sapporo",
@@ -100,7 +105,7 @@ let { city, weather } = obj
 ```
 
 ### スプレッド構文
-ベースオブジェクトの中身をそのままコピーできる
+スプレッド構文を使うと、オブジェクトの中身をそのままコピーできます。
 
 ```js
 const kitagasProfile = {
@@ -114,8 +119,20 @@ const myProfile = {
 }
 ```
 
+## 演算子
+四則演算やインクリメント・デクリメント演算子については割愛します。
+
+### 厳密等価演算子
+等価演算子は、型変換を暗黙的に行ってしまうため、厳密等価演算子を使うようにしましょう。
+
+`if` 文の時は、厳密等価演算子を使うこと推奨します。
+
+`===`：等しい場合
+
+`!==`：等しくない場合
+
 ## if文
-JavaScript には `if` と `else` があり、`elseif` はない。
+JavaScript には `if` と `else` があり、`elseif` はありません。
 ```js
 function tomorrowWeather(city="sapporo"){
   if (city === "sapporo") console.log("rainy")
@@ -126,15 +143,6 @@ function tomorrowWeather(city="sapporo"){
 tomorrowWeather("tokyo")
 ```
 
-## 演算子
-### 厳密等価演算子
-等価演算子は、型変換を暗黙的に行うのであまり利用しない方がいい。
-`if` 文の時は、厳密等価演算子を使うこと推奨。
-`===`
-
-`!==`
-
-
 ### 三項演算子
 if-else文と同じ
 ```js
@@ -144,6 +152,12 @@ else console.log("sunny")
 city === "sapporo" ? console.log("rainy") : console.log("sunny")
 ```
 
+## 関数
+```js
+function functionName(arg1, arg2) {
+  return arg1 + arg2
+}
+```
 
 引数のデフォルト値や、可変長引数 `...args` を設定することもできます。 
 
@@ -178,15 +192,17 @@ const testCity = {
 todayWeather(testCity)
 ```
 
-### Tips: `${variable}`
-文字列の表現の仕方は3つありますが、 `${variable}` という書き方をすると、
-文字列の中に変数を埋め込むことができます。
+### Tips: `` `${variable}` ``
+文字列の表現の仕方は3つありますが、 `` `${variable}` `` という書き方をすると、文字列の中に変数を埋め込むことができます。
+
 この場合はバッククオートで囲む必要があります。
 
 
 ### Tips: `else` はいらない
 `return` で値を返す関数などでは、 `else` はなくても良い
+
 ※宗教戦争になるので、あまり深入りはしません
+
 ```js
 function yesterdayWeather({ city }) {
   if (city === "sapporo") return "rainy" //　sapporo だった場合、ここで関数を抜ける
@@ -209,7 +225,8 @@ yesterdayWeather(friendProfile) // sunny
 ### 無名関数と即時関数
 短く書くことができる記法があります。
 `this` のスコープが違うので、使い所には注意（そのうち説明します）
-```
+
+```js
 const addFunction = function(x, y){
   return x + y;
 }
