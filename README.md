@@ -28,7 +28,7 @@ console.log('この行はコメントアウトされません')
 
 ## 変数の定義
 `let` または `const` で定義されます。`var` は非推奨です。
-
+`var` は変数を再び宣言することができてしまうため、意図しないバグが起きやすい仕様となっています。
 ```js
 let variable = 123;
 variable = 456;
@@ -62,6 +62,10 @@ typeof true
 typeof {}
 ```
 
+`typeof null` が object 型を返す理由は、歴史的な背景があります。
+
+JavaScript の実装初期段階で、 object として扱われていたため、現在も仕様として object 型となっています。
+
 ### Tips
 いろんな console メソッドがあります。
 
@@ -84,18 +88,18 @@ console.error(message)
 プロパティにアクセスするときは、`obj.prop` とドットでつなぎます。
 ```js
 let obj = {
-  'city': 'sapporo',
-  'weather': 'rainy'
+  city: 'sapporo',
+  weather: 'rainy'
 };
 
 obj.weather // "rainy"
 ```
 ### 分割代入
 分割代入の記法を使うと、オブジェクトのプロパティをわざわざ指定する必要がありません。
-```
+```js
 const obj = {
-  "city": "sapporo",
-  "weather": "rainy"
+  city: "sapporo",
+  weather: "rainy"
 }
 
 let city = obj.city
@@ -109,12 +113,12 @@ let { city, weather } = obj
 
 ```js
 const kitagasProfile = {
-  "city": "sapporo",
-  "company": "kitagas"
+  city: "sapporo",
+  company: "kitagas"
 }
 
 const myProfile = {
-  "name": "tenta",
+  name: "tenta",
   ...kitagasProfile
 }
 ```
@@ -210,13 +214,13 @@ function yesterdayWeather({ city }) {
 }
 
 const myProfile = {
-  "city": "sapporo",
-  "name": "tenta"
+  city: "sapporo",
+  name: "tenta"
 }
 
 const friendProfile = {
-  "city": "tokyo",
-  "name": "kitagas"
+  city: "tokyo",
+  name: "kitagas"
 }
 
 yesterdayWeather(myProfile) // rainy
@@ -238,4 +242,6 @@ const multipleFunction = (x, y) => {
 const exponentiationFunction = x => {
   return x ** 2;
 }
+
+const exponentiationFunc = x => x ** 3
 ```
