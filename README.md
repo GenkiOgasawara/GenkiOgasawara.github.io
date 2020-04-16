@@ -235,7 +235,7 @@ const multipleFunction = (x, y) => {
   return x * y;
 }
 
-const exponentionFunction = x => {
+const exponentiationFunction = x => {
   return x ** 2;
 }
 ```
