@@ -245,3 +245,55 @@ const exponentiationFunction = x => {
 
 const exponentiationFunc = x => x ** 3
 ```
+
+### 関数はオブジェクト
+```js
+typeof (() => {}) // "function"
+```
+
+関数は関数オブジェクトと呼ばれます。`()`を付けずによびだすと、オブジェクトとして参照することができます。
+
+関数が値として扱えることをファーストクラスファンクションと呼びます。
+
+関数式として定義するときは、無名関数で定義することができます。
+
+```js
+const func = function() {
+  console.log("Hello JavaScript")
+  }
+```
+
+### コールバック関数と高階関数
+無名関数を関数の引数として渡すことができる関数を高階関数と呼びます。
+
+また、高階関数の引数になる関数のことをコールバック関数を呼びます。
+
+```js
+const weatherArray = ["はれ", "くもり", "あめ"]
+
+const output = (weather) => {
+  console.log(weather)
+}
+
+weatherArray.forEach(output)
+
+weatherArray.forEach((weather) => {
+  console.log(weather)
+}
+```
+
+### メソッド
+オブジェクトのプロパティが関数の場合、これをメソッドと呼びます。
+
+```js
+const methodObj = {
+  method1: function() {
+    console.log("これはメソッドです")
+  },
+  
+  method2 () {
+    console.log("短縮記法で書いたメソッドです")
+  }
+}
+
+## 文と式
